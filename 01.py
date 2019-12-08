@@ -1,15 +1,16 @@
-import io
-import sys
-data = []
-f = open('01_input.txt', 'rt')
-for line in f.readlines():
-    x = line.rstrip('\n')
-    if len(x):
-        data.append(int(x))
+import util
 
-print(data[0])
+data = util.load_int_lines('01_input.txt')
+
 sum = 0
 for mass in data:
-    sum += int(mass / 3) - 2
+    sum += (mass // 3) - 2
 
-print(sum)
+print("Day 1. Part 1. ", sum) # expected 3282386
+
+sum = 0
+for mass in data:
+    while (mass := mass // 3 - 2) > 0:
+        sum += mass
+
+print("Day 1. Part 2. ", sum) # expected 4920708
